@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        .view {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hide scrollbar for mobile nav */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-xl tracking-tight text-slate-800 cursor-pointer" onclick="navigate('home')">
+                    Portfolio.
+                </div>
+                <nav class="flex space-x-6 overflow-x-auto no-scrollbar py-2 text-sm font-medium text-slate-600">
+                    <a href="#" data-target="home" class="nav-link active whitespace-nowrap hover:text-slate-900 transition-colors">Home</a>
+                    <a href="#" data-target="about" class="nav-link whitespace-nowrap hover:text-slate-900 transition-colors">About</a>
+                    <a href="#" data-target="projects" class="nav-link whitespace-nowrap hover:text-slate-900 transition-colors">Projects</a>
+                    <a href="#" data-target="participation" class="nav-link whitespace-nowrap hover:text-slate-900 transition-colors">Participation</a>
+                    <a href="#" data-target="blog" class="nav-link whitespace-nowrap hover:text-slate-900 transition-colors">Blog</a>
+                    <a href="#" data-target="books" class="nav-link whitespace-nowrap hover:text-slate-900 transition-colors">Books</a>
+                    <a href="#" data-target="contact" class="nav-link whitespace-nowrap hover:text-slate-900 transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+        
+        <!-- ================= HOME VIEW ================= -->
+        <section id="view-home" class="view active space-y-20">
+            <!-- Hero -->
+            <div class="text-center md:text-left md:flex md:items-center md:justify-between gap-12">
+                <div class="md:w-2/3 space-y-6">
+                    <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 leading-tight">
+                        Hi, I'm a <span class="text-blue-600">Computer Science</span> Student & Developer.
+                    </h1>
+                    <p class="text-lg text-slate-600 leading-relaxed max-w-2xl">
+                        I am currently pursuing my B.Sc in Computer Science & Engineering at United International University. I have a strong passion for Software Engineering, AI, and building scalable systems.
+                    </p>
+                    <div class="flex gap-4 justify-center md:justify-start">
+                        <button onclick="navigate('contact')" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-sm">
+                            Get in Touch
+                        </button>
+                        <button onclick="navigate('projects')" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 px-6 py-3 rounded-lg font-medium transition-colors shadow-sm">
+                            View Projects
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Stack Summary -->
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-8">Technical Expertise</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="home-tech-container">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT VIEW ================= -->
+        <section id="view-about" class="view space-y-16">
+            <div class="max-w-3xl">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">About Me</h2>
+                <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                    I am a dedicated and enthusiastic Computer Science & Engineering student, continuously learning and exploring the vast world of software development. My goal is to craft efficient, scalable, and visually appealing applications while solving complex problems.
+                </p>
+
+                <h3 class="text-2xl font-semibold text-slate-800 mb-6 mt-12">Education Timeline</h3>
+                <div class="space-y-8 border-l-2 border-blue-100 ml-3 pl-6">
+                    <div class="relative">
+                        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-[31px] top-1 border-4 border-white shadow-sm"></div>
+                        <h4 class="text-lg font-bold text-slate-900">B.Sc. in Computer Science & Engineering</h4>
+                        <p class="text-slate-500 font-medium">United International University</p>
+                        <p class="text-sm text-slate-400 mt-1">Expected Graduation: 2027</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[31px] top-1 border-4 border-white"></div>
+                        <h4 class="text-lg font-bold text-slate-900">Higher Secondary Certificate (HSC)</h4>
+                        <p class="text-slate-500 font-medium">Dr. Mahabubur Rahman Mollah College</p>
+                        <p class="text-sm text-slate-400 mt-1">Completed: 2022</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[31px] top-1 border-4 border-white"></div>
+                        <h4 class="text-lg font-bold text-slate-900">Secondary School Certificate (SSC)</h4>
+                        <p class="text-slate-500 font-medium">Motijheel Govt. Boys High School</p>
+                        <p class="text-sm text-slate-400 mt-1">Completed: 2020</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-slate-800 mb-6 mt-16">Career Ambitions</h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg font-medium border border-indigo-100">Software Engineer</span>
+                    <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg font-medium border border-indigo-100">Frontend Developer</span>
+                    <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg font-medium border border-indigo-100">Backend Developer</span>
+                    <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg font-medium border border-indigo-100">System Designer</span>
+                    <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg font-medium border border-indigo-100">AI Engineer</span>
+                    <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg font-medium border border-indigo-100">CI/CD & DevOPS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PROJECTS VIEW ================= -->
+        <section id="view-projects" class="view">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900">Projects</h2>
+                    <p class="text-slate-500 mt-2">A showcase of my recent work from GitHub.</p>
+                </div>
+            </div>
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ================= PARTICIPATION VIEW ================= -->
+        <section id="view-participation" class="view">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8">Prizes, Awards & Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="participation-list">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ================= BLOG VIEW ================= -->
+        <section id="view-blog" class="view">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8">Blog & Writings</h2>
+            <div class="max-w-3xl space-y-6" id="blog-list">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ================= BOOKS VIEW ================= -->
+        <section id="view-books" class="view">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">Reading List</h2>
+            <p class="text-slate-500 mb-8">Books I've read that shaped my thinking.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="books-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ================= CONTACT VIEW ================= -->
+        <section id="view-contact" class="view max-w-2xl mx-auto">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2">Get in Touch</h2>
+                <p class="text-slate-500 mb-8">Have a question or want to work together? Leave a message.</p>
+                
+                <form onsubmit="event.preventDefault(); alert('In a real app, this would send an email! Form submitted successfully.');" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                            <input type="text" required class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                            <input type="email" required class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-colors">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                        <input type="text" required class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                        <textarea rows="5" required class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-colors resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-3 rounded-lg transition-colors shadow-sm">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-slate-500 text-sm">
+                &copy; 2026 Portfolio. Built with HTML, CSS, & JS.
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="text-slate-400 hover:text-slate-600 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-slate-600 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data Structures
+        const techStacks = [
+            { category: "Languages", skills: ["C", "C++", "Java", "JavaScript", "Python"] },
+            { category: "Frontend", skills: ["HTML", "CSS", "REACT", "REDUX", "Tailwind CSS"] },
+            { category: "Backend", skills: ["NodeJS", "jQuery", "ExpressJS", "NGINX", "REST", "GraphQL", "Kafka", "RabbitMQ"] },
+            { category: "Backend-Services", skills: ["Supabase", "Firebase"] },
+            { category: "Framework", skills: ["NextJS", "Django"] },
+            { category: "Database", skills: ["MySQL", "MongoDB", "PostgreSQL"] },
+            { category: "Testing", skills: ["Selenium", "Jest"] },
+            { category: "Software/Tools", skills: ["FIGMA", "Postman"] },
+            { category: "AI/ML", skills: ["Pytorch", "TensorFlow", "Keras", "Pandas", "NumPy", "N8N"] },
+            { category: "Other", skills: ["Linux", "Git", "Bash", "SSH", "Docker"] }
+        ];
+
+        const mockProjects = [
+            { title: "E-Commerce Microservices", desc: "A robust backend system built with Node.js, Express, Kafka, and PostgreSQL to handle distributed e-commerce transactions.", tech: ["NodeJS", "Kafka", "PostgreSQL", "Docker"] },
+            { title: "AI Image Classifier", desc: "Convolutional Neural Network built with PyTorch to classify medical images with 95% accuracy.", tech: ["Python", "PyTorch", "NumPy", "Pandas"] },
+            { title: "Portfolio Dashboard", desc: "A React and Tailwind CSS based admin panel to manage personal portfolio content using a Supabase backend.", tech: ["React", "Tailwind CSS", "Supabase", "NextJS"] },
+            { title: "Real-time Chat App", desc: "Websocket-based chat application using React, ExpressJS, and MongoDB with instant message delivery.", tech: ["React", "ExpressJS", "MongoDB", "WebSockets"] }
+        ];
+
+        const mockParticipations = [
+            { title: "1st Place - National Hackathon 2024", type: "Award", desc: "Built an AI-driven disaster response coordination system." },
+            { title: "AWS Certified Cloud Practitioner", type: "Certification", desc: "Completed foundational cloud computing certification from AWS." },
+            { title: "Top 10 - ICPC Regional 2025", type: "Participation", desc: "Competed in the regional ACM-ICPC competitive programming contest." },
+            { title: "Meta Frontend Developer Certificate", type: "Certification", desc: "Professional certificate covering React, UI/UX, and Advanced JS." }
+        ];
+
+        const mockBlogs = [
+            { title: "Understanding Kafka in Microservices", date: "Oct 12, 2025", snippet: "A deep dive into message brokers and how Kafka ensures reliable data streams in distributed architectures..." },
+            { title: "Building Scalable UIs with React & Redux", date: "Sep 05, 2025", snippet: "Managing state in complex applications can be tricky. Here is my approach using Redux Toolkit..." },
+            { title: "My Journey into PyTorch and Machine Learning", date: "Aug 20, 2025", snippet: "Transitioning from traditional SWE to AI engineering was challenging. Here is what I learned..." }
+        ];
+
+        const mockBooks = [
+            { title: "Clean Code", author: "Robert C. Martin", coverHex: "1e293b" },
+            { title: "Designing Data-Intensive Apps", author: "Martin Kleppmann", coverHex: "0f172a" },
+            { title: "The Pragmatic Programmer", author: "Andrew Hunt", coverHex: "334155" },
+            { title: "Grokking Algorithms", author: "Aditya Bhargava", coverHex: "475569" }
+        ];
+
+        // Functions to Render Data
+        function renderTechStack() {
+            const container = document.getElementById('home-tech-container');
+            let html = '';
+            techStacks.forEach(stack => {
+                html += `
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h3 class="font-semibold text-slate-800 mb-4">${stack.category}</h3>
+                        <div class="flex flex-wrap gap-2">
+                            ${stack.skills.map(skill => `<span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderProjects() {
+            const container = document.getElementById('projects-grid');
+            let html = '';
+            mockProjects.forEach(proj => {
+                html += `
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col h-full hover:-translate-y-1 hover:shadow-md transition-all duration-300 cursor-pointer">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-bold text-lg text-slate-900">${proj.title}</h3>
+                            <svg class="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow">${proj.desc}</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-4 border-t border-slate-100">
+                            ${proj.tech.map(t => `<span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderParticipations() {
+            const container = document.getElementById('participation-list');
+            let html = '';
+            mockParticipations.forEach(item => {
+                html += `
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 flex items-start gap-4">
+                        <div class="mt-1 bg-yellow-100 text-yellow-600 p-2 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1 block">${item.type}</span>
+                            <h3 class="font-bold text-slate-900 mb-2">${item.title}</h3>
+                            <p class="text-sm text-slate-600">${item.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderBlogs() {
+            const container = document.getElementById('blog-list');
+            let html = '';
+            mockBlogs.forEach(blog => {
+                html += `
+                    <article class="group bg-white p-6 rounded-xl border border-slate-200 hover:border-blue-200 transition-colors cursor-pointer">
+                        <p class="text-sm text-slate-400 mb-2">${blog.date}</p>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">${blog.title}</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">${blog.snippet}</p>
+                        <div class="mt-4 text-blue-600 text-sm font-medium flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Read more <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </div>
+                    </article>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderBooks() {
+            const container = document.getElementById('books-grid');
+            let html = '';
+            mockBooks.forEach(book => {
+                html += `
+                    <div class="group cursor-pointer text-center">
+                        <div class="w-full aspect-[2/3] rounded-lg shadow-sm mb-4 relative overflow-hidden transition-transform duration-300 group-hover:-translate-y-2" style="background-color: #${book.coverHex}">
+                            <div class="absolute inset-0 flex flex-col justify-center items-center p-4 text-white opacity-90 border-l-8 border-black/20">
+                                <h3 class="font-serif font-bold text-lg leading-tight mb-2">${book.title}</h3>
+                                <p class="text-xs opacity-75">${book.author}</p>
+                            </div>
+                        </div>
+                        <h4 class="font-medium text-slate-900 text-sm truncate px-2">${book.title}</h4>
+                        <p class="text-xs text-slate-500 mt-1">${book.author}</p>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // SPA Navigation Logic
+        function navigate(targetId) {
+            // 1. Hide all views
+            const views = document.querySelectorAll('.view');
+            views.forEach(view => {
+                view.classList.remove('active');
+            });
+
+            // 2. Show target view
+            const targetView = document.getElementById(`view-${targetId}`);
+            if (targetView) {
+                targetView.classList.add('active');
+            }
+
+            // 3. Update nav active state
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-target') === targetId) {
+                    link.classList.add('active');
+                    link.classList.add('text-slate-900');
+                    link.classList.remove('text-slate-600');
+                } else {
+                    link.classList.remove('active');
+                    link.classList.remove('text-slate-900');
+                    link.classList.add('text-slate-600');
+                }
+            });
+
+            // 4. Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            // Attach click events to nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = link.getAttribute('data-target');
+                    navigate(target);
+                });
+            });
+
+            // Render all dynamic content
+            renderTechStack();
+            renderProjects();
+            renderParticipations();
+            renderBlogs();
+            renderBooks();
+        });
+    </script>
+</body>
+</html>
